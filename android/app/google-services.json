@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "969909920855",
+    "project_id": "dual-34eb6",
+    "storage_bucket": "dual-34eb6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969909920855:android:be65ffe09f0414208a2f12",
+        "android_client_info": {
+          "package_name": "com.example.dual"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "969909920855-ng1t2aubrcne86spv857vqfblkfem7p0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKgfk4K_6X_SN_80DiLjdrdd52kLOT1bQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "969909920855-ng1t2aubrcne86spv857vqfblkfem7p0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
