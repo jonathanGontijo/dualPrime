@@ -1,5 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dual/models/casualty.dart';
+import 'package:dual/models/casualty_manager.dart';
 import 'package:dual/screens/base/base_screen.dart';
+import 'package:dual/screens/casualty/casualty_screen.dart';
 import 'package:dual/screens/login/login_screen.dart';
 import 'package:dual/screens/signup/signup_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -27,9 +30,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => UserManager(),
-      lazy: false,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => UserManager(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CasualtyManager(),
+          lazy: false,
+        ),
+      ],
       child: MaterialApp(
         title: 'Prime Automotive',
         debugShowCheckedModeBanner: false,
@@ -55,6 +66,12 @@ class MyApp extends StatelessWidget {
             case '/signup':
               return MaterialPageRoute(
                   builder: (_) => SignUpScreen()
+              );
+            case '/casualty':
+              return MaterialPageRoute(
+                  builder: (_) => CasualtyScreen(
+                    settings.arguments as Casualty
+                  )
               );
               default:
                 return MaterialPageRoute(
