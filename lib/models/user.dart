@@ -22,7 +22,10 @@ class Usuario {
    DocumentReference get firestoreRef =>
        FirebaseFirestore.instance.doc('users/$id');
 
-   Future<void> saveData() async{
+   CollectionReference get orderReference =>
+   firestoreRef.collection('order');
+
+   Future<void> saveData() async {
    await firestoreRef.set(toMap());
    }
 

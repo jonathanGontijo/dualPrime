@@ -87,6 +87,14 @@ class ClasualtiesScreen extends StatelessWidget {
           );
         }
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        foregroundColor: Theme.of(context).primaryColor,
+        onPressed: (){
+          Navigator.of(context).pushNamed('/order');
+        },
+        child: Icon(Icons.car_rental_sharp),
+      ),
     );
   }
 }

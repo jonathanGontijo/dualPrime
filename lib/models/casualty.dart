@@ -46,5 +46,13 @@ class Casualty extends ChangeNotifier{
   bool get hasStock{
     return totalStock > 0;
   }
+  
+  CarSize? findSize(String name) {
+    try{
+      return sizes.firstWhere((s) => s.name == name);
+    } catch (e){
+    return null;
+    }
+  }
 
 }

@@ -79,6 +79,7 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                         height: 44,
                         child: RaisedButton(
+                          color: Theme.of(context).primaryColor,
                           onPressed: userManager.loading ? null : () {
                             if(formKey.currentState!.validate()){
                               userManager.signIn(

@@ -1,6 +1,7 @@
 import 'package:dual/common/custom_drawer/custom_drawer.dart';
 import 'package:dual/models/page_manager.dart';
 import 'package:dual/screens/casualties/casualties_screen.dart';
+import 'package:dual/screens/information/information_screen.dart';
 import 'package:dual/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,12 +30,7 @@ class BaseScreen extends StatelessWidget {
             ),
           ),
           ClasualtiesScreen(),
-          Scaffold(
-            drawer: CustomDrawer(),
-            appBar: AppBar(
-              title: const Text('Home 4'),
-            ),
-          ),
+          InformationScreen(),
         ],
       ),
     );

@@ -50,7 +50,7 @@ class CasualtyListTile extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Telefone : 0000000',
+                        'Telefone : (31) 3318-8360',
                         style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w800,

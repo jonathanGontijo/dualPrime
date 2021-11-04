@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dual/models/casualty.dart';
+import 'package:dual/models/order_manager.dart';
 import 'package:dual/models/user_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -62,7 +63,7 @@ class CasualtyScreen extends StatelessWidget {
                    ),
                   ),
                   Text(
-                    'Telefone: 0000000',
+                    'Telefone: (31) 3318-8360 \n(31) 98470-3470',
                     style: TextStyle(
                       fontSize: 22.0,
                       fontWeight: FontWeight.bold,
@@ -111,7 +112,8 @@ class CasualtyScreen extends StatelessWidget {
                           child: RaisedButton(
                             onPressed: casualty.selectedSize != null ? (){
                               if (UserManager.isLoggedIn){
-
+                                context.read<OrderManager>().addToOrder(casualty);
+                                Navigator.of(context).pushNamed('/order');
                               }else {
                                 Navigator.of(context).pushNamed('/login');
                               }

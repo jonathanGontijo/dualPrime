@@ -1,9 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dual/models/casualty.dart';
 import 'package:dual/models/casualty_manager.dart';
+import 'package:dual/models/order_manager.dart';
 import 'package:dual/screens/base/base_screen.dart';
 import 'package:dual/screens/casualty/casualty_screen.dart';
+import 'package:dual/screens/information/information_screen.dart';
 import 'package:dual/screens/login/login_screen.dart';
+import 'package:dual/screens/order/order_screen.dart';
 import 'package:dual/screens/signup/signup_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +43,12 @@ class MyApp extends StatelessWidget {
           create: (_) => CasualtyManager(),
           lazy: false,
         ),
+        ChangeNotifierProxyProvider<UserManager, OrderManager>(
+          create: (_) => OrderManager(),
+          lazy: false,
+          update: (_, UserManager, OrderManager)=>
+              OrderManager!..updateUser(UserManager),
+        ),
       ],
       child: MaterialApp(
         title: 'Prime Automotive',
@@ -72,6 +81,14 @@ class MyApp extends StatelessWidget {
                   builder: (_) => CasualtyScreen(
                     settings.arguments as Casualty
                   )
+              );
+            case '/order':
+              return MaterialPageRoute(
+                  builder: (_) => OrderScreen()
+              );
+            case '/information':
+              return MaterialPageRoute(
+                  builder: (_) => InformationScreen()
               );
               default:
                 return MaterialPageRoute(
