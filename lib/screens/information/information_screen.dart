@@ -1,3 +1,4 @@
+import 'package:dual/common/custom_drawer/custom_drawer.dart';
 import 'package:flutter/material.dart';
 
 class InformationScreen extends StatelessWidget {
@@ -6,6 +7,7 @@ class InformationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: CustomDrawer(),
       appBar: AppBar(
         title: Text(
           'Informações',

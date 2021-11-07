@@ -3,6 +3,7 @@ import 'package:dual/models/casualty.dart';
 import 'package:dual/models/casualty_manager.dart';
 import 'package:dual/models/order_manager.dart';
 import 'package:dual/screens/base/base_screen.dart';
+import 'package:dual/screens/bonus/bonus_screen.dart';
 import 'package:dual/screens/casualty/casualty_screen.dart';
 import 'package:dual/screens/information/information_screen.dart';
 import 'package:dual/screens/login/login_screen.dart';
@@ -14,6 +15,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'models/home_manager.dart';
 import 'models/user_manager.dart';
 
 void main() async {
@@ -41,6 +43,10 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => CasualtyManager(),
+          lazy: false,
+        ),
+        Provider(
+          create: (_) => HomeManager(),
           lazy: false,
         ),
         ChangeNotifierProxyProvider<UserManager, OrderManager>(
@@ -89,6 +95,10 @@ class MyApp extends StatelessWidget {
             case '/information':
               return MaterialPageRoute(
                   builder: (_) => InformationScreen()
+              );
+            case '/bonus':
+              return MaterialPageRoute(
+                  builder: (_) => BonusScreen()
               );
               default:
                 return MaterialPageRoute(
