@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dual/models/admin_users_manager.dart';
 import 'package:dual/models/casualty.dart';
 import 'package:dual/models/casualty_manager.dart';
 import 'package:dual/models/order_manager.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
           create: (_) => CasualtyManager(),
           lazy: false,
         ),
-        Provider(
+        ChangeNotifierProvider(
           create: (_) => HomeManager(),
           lazy: false,
         ),
@@ -55,6 +56,12 @@ class MyApp extends StatelessWidget {
           update: (_, UserManager, OrderManager)=>
               OrderManager!..updateUser(UserManager),
         ),
+        ChangeNotifierProxyProvider<UserManager, AdminUsersManager>(
+            create: (_) => AdminUsersManager(),
+            lazy: false,
+          update: (_, UserManager, AdminUserManager) =>
+              AdminUserManager!..updateUser(UserManager),
+        )
       ],
       child: MaterialApp(
         title: 'Prime Automotive',

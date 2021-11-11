@@ -45,5 +45,13 @@ class CasualtyManager extends ChangeNotifier{
 
     notifyListeners();
   }
+  
+  Casualty? findCasualtyById(String id) {
+    try {
+      return allCasualty.firstWhere((p) => p.id == id);
+    } catch (e) {
+      return null;
+    }
+  }
 
 }

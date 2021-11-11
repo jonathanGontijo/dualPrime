@@ -19,6 +19,8 @@ class Usuario {
 
    late String confirmPassword;
 
+   bool admin = false;
+
    DocumentReference get firestoreRef =>
        FirebaseFirestore.instance.doc('users/$id');
 
