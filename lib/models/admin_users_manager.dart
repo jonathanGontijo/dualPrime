@@ -32,7 +32,6 @@ class AdminUsersManager extends ChangeNotifier{
       usuarios.sort((a,b) =>
           a.name.toLowerCase().compareTo(b.name.toLowerCase()));
 
-      print(usuarios);
 
       notifyListeners();
     });

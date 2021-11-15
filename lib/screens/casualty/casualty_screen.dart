@@ -25,6 +25,25 @@ class CasualtyScreen extends StatelessWidget {
             casualty.name
           ),
           centerTitle: true,
+          actions: [
+            Consumer<UserManager>(
+              builder: (_, userManager, __){
+                if (userManager.adminEnable) {
+                  return IconButton(
+                      icon: Icon(Icons.edit),
+                      onPressed: (){
+                        Navigator.of(context).pushReplacementNamed(
+                            '/edit_casualty',
+                          arguments: casualty
+                        );
+                },
+                  );
+                } else {
+                  return Container();
+                }
+              },
+            )
+          ],
         ),
         backgroundColor: Colors.white,
         body: ListView(

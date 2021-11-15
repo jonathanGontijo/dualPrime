@@ -6,6 +6,7 @@ import 'package:dual/models/order_manager.dart';
 import 'package:dual/screens/base/base_screen.dart';
 import 'package:dual/screens/bonus/bonus_screen.dart';
 import 'package:dual/screens/casualty/casualty_screen.dart';
+import 'package:dual/screens/edit_casualty/edit_casualty_screen.dart';
 import 'package:dual/screens/information/information_screen.dart';
 import 'package:dual/screens/login/login_screen.dart';
 import 'package:dual/screens/order/order_screen.dart';
@@ -106,6 +107,12 @@ class MyApp extends StatelessWidget {
             case '/bonus':
               return MaterialPageRoute(
                   builder: (_) => BonusScreen()
+              );
+            case '/edit_casualty':
+              return MaterialPageRoute(
+                  builder: (_) => EditCasualtyScreen(
+                    settings.arguments as Casualty
+                  )
               );
               default:
                 return MaterialPageRoute(
