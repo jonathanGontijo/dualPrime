@@ -1,5 +1,6 @@
 import 'package:dual/common/custom_drawer/custom_drawer.dart';
 import 'package:dual/models/casualty_manager.dart';
+import 'package:dual/models/user_manager.dart';
 import 'package:dual/screens/casualties/components/casualty_list_tile.dart';
 import 'package:dual/screens/casualties/search_dialog.dart';
 import 'package:flutter/material.dart';
@@ -70,6 +71,22 @@ class ClasualtiesScreen extends StatelessWidget {
                      );
                     }
                  },
+          ),
+          Consumer<UserManager>(
+            builder: (_, userManager, __){
+              if (userManager.adminEnable) {
+                return IconButton(
+                  icon: Icon(Icons.add),
+                  onPressed: (){
+                    Navigator.of(context).pushNamed(
+                        '/edit_casualty',
+                    );
+                  },
+                );
+              } else {
+                return Container();
+              }
+            },
           )
         ],
       ),

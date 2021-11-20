@@ -6,7 +6,7 @@ class CarSize{
     stock = map['stock'] as int;
   }
 
-  CarSize(String g, String a, String l);
+  CarSize(/*String g, String a, String l*/);
 
    String? name;
    num? price;

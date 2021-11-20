@@ -1,11 +1,12 @@
 import 'package:dual/models/casualty.dart';
 import 'package:flutter/material.dart';
-
 import 'components/images_form.dart';
+import 'components/sizes_form.dart';
 
 class EditCasualtyScreen extends StatelessWidget {
 
-  EditCasualtyScreen(this.casualty);
+  EditCasualtyScreen(Casualty c) :
+        casualty = c != null ? c : Casualty();
 
   final Casualty casualty;
 
@@ -91,15 +92,25 @@ class EditCasualtyScreen extends StatelessWidget {
                       return null;
                     },
                   ),
-                  RaisedButton(
-                    onPressed: (){
-                      if (formKey.currentState!.validate()) {
-                        print('valido');
-                      }  else {
-                        print('invalido');
-                      }
-                    },
-                    child: const Text('Salvar'),
+                  SizesForm(casualty),
+                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 44,
+                    child: RaisedButton(
+                      onPressed: (){
+                        if (formKey.currentState!.validate()) {
+                          print('valido');
+                        }
+                      },
+                      color: primaryColor,
+                      disabledColor: primaryColor.withAlpha(100),
+                      child: const Text(
+                          'Salvar',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),

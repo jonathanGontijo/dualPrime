@@ -4,8 +4,13 @@ import 'package:flutter/cupertino.dart';
 
 class Casualty extends ChangeNotifier{
 
+  Casualty(){
+    images = [];
+    sizes = [];
+  }
+
   List<CarSize> carSize = [];
-  CarSize _selectedSize = CarSize('','','') ;
+  CarSize _selectedSize = CarSize(/*'','',''*/) ;
 
   Casualty.fromDocument(DocumentSnapshot document){
     id = document.id;
