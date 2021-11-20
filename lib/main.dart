@@ -3,6 +3,7 @@ import 'package:dual/models/admin_users_manager.dart';
 import 'package:dual/models/casualty.dart';
 import 'package:dual/models/casualty_manager.dart';
 import 'package:dual/models/order_manager.dart';
+import 'package:dual/screens/adress/adress_screen.dart';
 import 'package:dual/screens/base/base_screen.dart';
 import 'package:dual/screens/bonus/bonus_screen.dart';
 import 'package:dual/screens/casualty/casualty_screen.dart';
@@ -11,6 +12,7 @@ import 'package:dual/screens/information/information_screen.dart';
 import 'package:dual/screens/login/login_screen.dart';
 import 'package:dual/screens/order/order_screen.dart';
 import 'package:dual/screens/signup/signup_screen.dart';
+import 'package:dual/services/cepaberto_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -27,9 +29,8 @@ void main() async {
 
   runApp(MyApp());
 
- /* FirebaseFirestore db = FirebaseFirestore.instance;
+  CepAbertoService().getAddressFromCep('32.185-020').then((address) => print(address));
 
-  db.collection("usuarios").doc("003").set({"nome": "Jamilton", "idade": "30"});*/
 }
 
 class MyApp extends StatelessWidget {
@@ -99,6 +100,10 @@ class MyApp extends StatelessWidget {
             case '/order':
               return MaterialPageRoute(
                   builder: (_) => OrderScreen()
+              );
+            case '/adress':
+              return MaterialPageRoute(
+                  builder: (_) => AdressScreen()
               );
             case '/information':
               return MaterialPageRoute(

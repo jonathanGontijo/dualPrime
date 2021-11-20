@@ -3,14 +3,18 @@ import 'package:dual/models/casualty.dart';
 import 'package:dual/models/order_casualty.dart';
 import 'package:dual/models/user.dart';
 import 'package:dual/models/user_manager.dart';
+import 'package:dual/services/cepaberto_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'address.dart';
 
 class OrderManager extends ChangeNotifier{
 
   List<OrderCasualty> items = [];
 
   Usuario? usuario;
+  Address? address;
 
   num orderPrice = 0.0;
 
@@ -82,6 +86,29 @@ class OrderManager extends ChangeNotifier{
       if(!orderCasualty.hasStock) return false;
     }
     return true;
+  }
+
+  Future<void> getAddress(String cep) async {
+    final cepAbertoService = CepAbertoService();
+
+    try {
+      final cepAbertoAddress = await cepAbertoService.getAddressFromCep(cep);
+
+      if(cepAbertoAddress != null){
+        address = Address(
+            street: cepAbertoAddress.logradouro,
+            district: cepAbertoAddress.bairro,
+            zipCode: cepAbertoAddress.cep,
+            city: cepAbertoAddress.cidade.nome,
+            state: cepAbertoAddress.estado.sigla,
+            lat: cepAbertoAddress.latitude,
+            long: cepAbertoAddress.longitude
+        );
+        notifyListeners();
+      }
+    } catch (e){
+      debugPrint(e.toString());
+    }
   }
 
 }

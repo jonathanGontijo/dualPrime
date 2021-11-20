@@ -26,10 +26,9 @@ class OrderScreen extends StatelessWidget {
               ),
               PriceOrder(
                 buttonText: 'Continuar para local da prestação do serviço',
-                onPressed: //orderManager.isOrderValid?
-                    (){
-
-                } //: null,
+                onPressed: (){
+                  Navigator.of(context).pushNamed('/adress');
+                }
               ),
             ],
           );
