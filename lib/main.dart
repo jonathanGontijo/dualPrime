@@ -29,7 +29,7 @@ void main() async {
 
   runApp(MyApp());
 
-  CepAbertoService().getAddressFromCep('32.185-020').then((address) => print(address));
+  //CepAbertoService().getAddressFromCep('32.185-020').then((address) => print(address));
 
 }
 

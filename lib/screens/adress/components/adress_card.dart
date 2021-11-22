@@ -1,4 +1,6 @@
+import 'package:dual/models/address.dart';
 import 'package:dual/models/order_manager.dart';
+import 'package:dual/screens/adress/components/address_input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'cep_input_field.dart';
@@ -13,8 +15,7 @@ class AdressCard extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
         child: Consumer<OrderManager>(
           builder: (_, orderManager, __){
-            final address = orderManager.address;
-            print(address);
+            final address = orderManager.address ?? Address();
 
             return Form(
               child: Column(
@@ -27,7 +28,15 @@ class AdressCard extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
-                  CepInputField()
+                  CepInputField(address),
+                  AddressInputField(address),
+                 // if(address.zipCode != null && orderManager.distancyP != null)
+                   /* Padding(
+                        padding: EdgeInsets.only(bottom: 16),
+                      child: Text(
+                        '${address.street}, ${address.number}\n${address.district}\n${address.city} - ${address.state}'
+                      ),
+                    )*/
                 ],
               ),
             );

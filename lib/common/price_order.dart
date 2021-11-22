@@ -45,9 +45,7 @@ class PriceOrder extends StatelessWidget {
                 Text('Total',
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
-                Text(
-                  'R\$ 14.99'
-                ),
+                Text('R\$ ${orderPrices.toStringAsFixed(2)}'),
               ],
             ),
             SizedBox(height: 8,),

@@ -1,4 +1,7 @@
+import 'package:dual/common/price_order.dart';
+import 'package:dual/models/order_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'components/adress_card.dart';
 
@@ -14,7 +17,17 @@ class AdressScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          AdressCard()
+          AdressCard(),
+          Consumer<OrderManager>(
+              builder: (_,orderManager, __){
+                return PriceOrder(
+                  buttonText: 'Continuar para finalizar',
+                  onPressed: /* orderManager.isAddressValid ? */ (){
+
+                  }, /*: null,*/
+                );
+              },
+          ),
         ],
       ),
     );

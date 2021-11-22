@@ -1,17 +1,17 @@
 class Address {
 
-  Address({required this.street, required this.district,
-    required this.zipCode, required this.city, required this.state, required this.lat, required this.long});
+  Address({this.street,  this.district, this.number, this.complement,
+     this.zipCode,  this.city,  this.state,  this.lat,  this.long});
 
-  late String street;
-  late String number;
-  late String complement;
-  late String district;
-  late String zipCode;
-  late String city;
-  late String state;
+  late String? street;
+  late String? number;
+  late String? complement;
+  late String? district;
+  late String? zipCode;
+  late String? city;
+  late String? state;
 
-  late double? lat;
-  late double? long;
+  double? lat;
+  double? long;
 
 }

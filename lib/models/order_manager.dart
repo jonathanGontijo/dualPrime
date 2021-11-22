@@ -1,3 +1,4 @@
+import 'package:geolocator/geolocator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dual/models/casualty.dart';
 import 'package:dual/models/order_casualty.dart';
@@ -5,8 +6,6 @@ import 'package:dual/models/user.dart';
 import 'package:dual/models/user_manager.dart';
 import 'package:dual/services/cepaberto_service.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import 'address.dart';
 
 class OrderManager extends ChangeNotifier{
@@ -17,6 +16,9 @@ class OrderManager extends ChangeNotifier{
   Address? address;
 
   num orderPrice = 0.0;
+  num distancyP = 0.0;
+
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   void updateUser(UserManager userManager){
     usuario = userManager.usuario;
@@ -88,6 +90,8 @@ class OrderManager extends ChangeNotifier{
     return true;
   }
 
+  bool get isAddressValid => address != null && distancyP != null;
+
   Future<void> getAddress(String cep) async {
     final cepAbertoService = CepAbertoService();
 
@@ -110,5 +114,47 @@ class OrderManager extends ChangeNotifier{
       debugPrint(e.toString());
     }
   }
+
+  Future<void> setAddress(Address address)async{
+    this.address = address;
+
+    if(await calculate(address.lat, address.long)){
+      print('price $distancyP');
+      notifyListeners();
+    } else {
+      return Future.error('Endereço acima da distancia limite. ');
+    }
+  }
+
+  void removedAddress(){
+    address = null;
+    notifyListeners();
+  }
+
+  Future<bool> calculate(double? lat, double? long) async {
+    final DocumentSnapshot doc = await firestore.doc('aux/distancy').get();
+
+    final latStore = doc.data()!['lat'] as double;
+    final longStore = doc.data()!['long'] as double;
+
+    final maxkm = doc.data()!['maxkm'] as num;
+
+    double dis =
+    await Geolocator.distanceBetween(latStore, longStore, lat!, long!);
+
+    dis /= 1000.0;
+
+    print('Distance $dis');
+
+    if(dis > maxkm){
+      return false ;
+    }
+
+    distancyP = dis;
+    return true;
+
+
+  }
+
 
 }
