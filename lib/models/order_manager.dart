@@ -18,6 +18,14 @@ class OrderManager extends ChangeNotifier{
   num orderPrice = 0.0;
   num distancyP = 0.0;
 
+  /*bool _loading = false;
+  bool get loading => _loading;
+    set loading(bool value){
+      _loading = value;
+      notifyListeners();
+    }
+  }*/
+
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   void updateUser(UserManager userManager){

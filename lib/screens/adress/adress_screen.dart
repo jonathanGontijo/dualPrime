@@ -23,8 +23,7 @@ class AdressScreen extends StatelessWidget {
                 return PriceOrder(
                   buttonText: 'Continuar para finalizar',
                   onPressed: /* orderManager.isAddressValid ? */ (){
-
-                  }, /*: null,*/
+                    Navigator.of(context).pushNamed('/checkout');                  }, /*: null,*/
                 );
               },
           ),

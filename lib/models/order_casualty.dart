@@ -59,6 +59,14 @@ class OrderCasualty extends ChangeNotifier {
     };
   }
 
+  Map<String, dynamic> toOrdersItemMap(){
+    return{
+      'oid': orderId,
+      'quantity': quantity,
+      'size': size,
+    };
+  }
+
   bool stackable(Casualty casualty){
       return casualty.id == orderId && casualty.selectedSize.name == size;
   }

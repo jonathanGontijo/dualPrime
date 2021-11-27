@@ -7,6 +7,7 @@ import 'package:dual/screens/adress/adress_screen.dart';
 import 'package:dual/screens/base/base_screen.dart';
 import 'package:dual/screens/bonus/bonus_screen.dart';
 import 'package:dual/screens/casualty/casualty_screen.dart';
+import 'package:dual/screens/checkout/checkout_screen.dart';
 import 'package:dual/screens/edit_casualty/edit_casualty_screen.dart';
 import 'package:dual/screens/information/information_screen.dart';
 import 'package:dual/screens/login/login_screen.dart';
@@ -104,6 +105,10 @@ class MyApp extends StatelessWidget {
             case '/adress':
               return MaterialPageRoute(
                   builder: (_) => AdressScreen()
+              );
+            case '/checkout':
+              return MaterialPageRoute(
+                  builder: (_) => CheckoutScreen()
               );
             case '/information':
               return MaterialPageRoute(
