@@ -3,6 +3,7 @@ import 'package:dual/models/admin_users_manager.dart';
 import 'package:dual/models/casualty.dart';
 import 'package:dual/models/casualty_manager.dart';
 import 'package:dual/models/order_manager.dart';
+import 'package:dual/models/orders_adm.dart';
 import 'package:dual/screens/adress/adress_screen.dart';
 import 'package:dual/screens/base/base_screen.dart';
 import 'package:dual/screens/bonus/bonus_screen.dart';
@@ -59,6 +60,12 @@ class MyApp extends StatelessWidget {
           update: (_, UserManager, OrderManager)=>
               OrderManager!..updateUser(UserManager),
         ),
+        /*ChangeNotifierProxyProvider<UserManager, OrdersAdm>(
+            create: (_) => OrdersAdm(),
+            lazy: false,
+            update: (_, UserManager, OrdersAdm) =>
+          OrdersAdm!..updateUser(UserManager.usuario),
+        ),*/
         ChangeNotifierProxyProvider<UserManager, AdminUsersManager>(
             create: (_) => AdminUsersManager(),
             lazy: false,
@@ -126,7 +133,8 @@ class MyApp extends StatelessWidget {
               );
               default:
                 return MaterialPageRoute(
-                    builder: (_) => BaseScreen()
+                    builder: (_) => BaseScreen(),
+                  settings: settings
                 );
           }
         },

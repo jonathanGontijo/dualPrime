@@ -31,6 +31,8 @@ class UserManager extends ChangeNotifier {
       await _loaCurrrentUser(user: result.user );
       //this.usuario = result.user! as Usuario?;
 
+      //await usuario.saveToken();
+
       onSucess();
 
     } on PlatformException  catch (e) {
@@ -52,6 +54,8 @@ class UserManager extends ChangeNotifier {
 
       await usuario.saveData();
 
+     // await usuario.saveToken();
+
       onSucess();
 
     } on PlatformException catch (e) {
@@ -62,7 +66,7 @@ class UserManager extends ChangeNotifier {
 
   void signOut(){
     auth.signOut();
-    usuario = null;
+    usuario = null!;
     notifyListeners();
   }
 
@@ -77,7 +81,9 @@ class UserManager extends ChangeNotifier {
     if (currentUser != null) {
        final DocumentSnapshot docUser = await firestore.collection('users')
            .doc(currentUser.uid).get();
-       usuario = Usuario.fromDocument(docUser) as Usuario?;
+       usuario = (Usuario.fromDocument(docUser) as Usuario?)!;
+
+      // usuario!.saveToken();
 
 
        final docAdmin = await firestore.collection('admins').doc(usuario!.id).get();

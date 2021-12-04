@@ -9,13 +9,20 @@ class CheckoutManager extends ChangeNotifier{
 
   OrderManager? orderManager;
 
+  bool _loading = false;
+  bool get loading => _loading;
+  set loading(bool value){
+    _loading = value;
+    notifyListeners();
+  }
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   void updateOrder(OrderManager orderManager){
     this.orderManager = orderManager;
   }
 
-  void checkout() async {
+  Future< void> checkout({Function? onSucess}) async {
+    loading = true;
 
    // _decrementStock();
 
@@ -27,6 +34,11 @@ class CheckoutManager extends ChangeNotifier{
     order.orderid = orderId.toString();
 
     await order.save();
+
+    orderManager!.clear();
+    onSucess!();
+
+    loading = false;
   }
 
 

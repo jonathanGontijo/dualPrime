@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 
 class Usuario {
@@ -27,6 +30,9 @@ class Usuario {
    CollectionReference get orderReference =>
    firestoreRef.collection('order');
 
+  /*CollectionReference get tokensReference =>
+      firestoreRef.collection('tokens');*/
+
    Future<void> saveData() async {
    await firestoreRef.set(toMap());
    }
@@ -37,4 +43,13 @@ class Usuario {
        'email' : email,
       };
     }
+
+    /*Future<void> saveToken() async {
+     final token = await FirebaseMessaging.instance.getToken();
+     tokensReference.doc(token).set({
+       'token' : token,
+       'updateAt': FieldValue.serverTimestamp(),
+       'Platform': Platform.operatingSystem,
+     });
+    }*/
 }

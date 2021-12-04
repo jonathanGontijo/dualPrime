@@ -20,12 +20,37 @@ class CheckoutScreen extends StatelessWidget {
         ),
         body: Consumer<CheckoutManager>(
           builder: (_, checkoutManager, __){
+            if(checkoutManager.loading){
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation(Colors.white),
+                    ),
+                    SizedBox(height: 16,),
+                    Text('Processando seu Chamado...',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 16
+                    ),
+                    )
+                  ],
+                ),
+              );
+            }
             return ListView(
               children: [
                 PriceOrder(
                     buttonText: 'Finalizar Ordem',
                     onPressed: (){
-                      checkoutManager.checkout();
+                      checkoutManager.checkout(
+                        onSucess: (){
+                          Navigator.of(context).popUntil(
+                                  (route) => route.settings.name == '/base');
+                        }
+                      );
                     }
                 )
               ],

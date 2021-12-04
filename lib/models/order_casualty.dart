@@ -28,6 +28,12 @@ class OrderCasualty extends ChangeNotifier {
     );
   }
 
+  OrderCasualty.fromMap(Map<String, dynamic> map){
+    orderId = map['oid'] as String;
+    quantity = map['quantity'] as int;
+    size = map['size'] as String;
+  }
+
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   late String id;
@@ -35,6 +41,7 @@ class OrderCasualty extends ChangeNotifier {
   late String orderId;
   late int quantity;
   late String size;
+
 
   Casualty? casualty;
 
@@ -64,6 +71,7 @@ class OrderCasualty extends ChangeNotifier {
       'oid': orderId,
       'quantity': quantity,
       'size': size,
+
     };
   }
 

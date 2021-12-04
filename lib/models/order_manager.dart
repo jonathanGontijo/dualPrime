@@ -66,6 +66,14 @@ class OrderManager extends ChangeNotifier{
     notifyListeners();
   }
 
+  void clear(){
+    for(final orderCasualty in items ){
+      usuario!.orderReference.doc(orderCasualty.id).delete();
+    }
+    items.clear();
+    notifyListeners();
+  }
+
   void _onItemUpdated(){
     orderPrice = 0.0;
 

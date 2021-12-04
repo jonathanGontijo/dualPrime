@@ -7,6 +7,7 @@ import 'package:dual/screens/casualties/casualties_screen.dart';
 import 'package:dual/screens/home/home_screen.dart';
 import 'package:dual/screens/information/information_screen.dart';
 import 'package:dual/screens/login/login_screen.dart';
+import 'package:dual/screens/services/services_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,12 +27,7 @@ class BaseScreen extends StatelessWidget {
               HomeScreen(),
               BonusScreen(),
               ClasualtiesScreen(),
-              Scaffold(
-                drawer: CustomDrawer(),
-                appBar: AppBar(
-                  title: Text('Oficinas'),
-                ),
-              ),
+              ServicesScreen(),
               InformationScreen(),
               if (userManager.adminEnable)
                 ...[

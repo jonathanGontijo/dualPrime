@@ -30,7 +30,7 @@ class CustomDrawer extends StatelessWidget {
               DrawerTile(iconData: Icons.home, title: 'Início', page: 0,),
               DrawerTile(iconData: Icons.list, title: 'Benefícios',page: 1,),
               DrawerTile(iconData: Icons.playlist_add_check, title: 'Sinistros',page: 2,),
-              DrawerTile(iconData: Icons.location_on, title: 'Oficinas',page: 3,),
+              DrawerTile(iconData: Icons.location_on, title: 'Meus Chamados',page: 3,),
               DrawerTile(iconData: Icons.perm_device_information, title: 'Informações',page: 4,),
               Consumer<UserManager>(
                   builder: (_, userManager, __) {
